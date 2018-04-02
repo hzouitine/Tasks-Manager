@@ -20,11 +20,21 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> findAll(){
+    public List<Task> findAll() {
         List<Task> tasks = new ArrayList<>();
-         for( Task t : taskRepository.findAll())
-             tasks.add(t);
-         return tasks;
+        for (Task t : taskRepository.findAll())
+            tasks.add(t);
+        return tasks;
     }
+
+    // Insert + Update
+    public void save(Task t){
+        taskRepository.save(t);
+    }
+
+    public void delete(int id){
+        taskRepository.deleteById(id);
+    }
+
 
 }
