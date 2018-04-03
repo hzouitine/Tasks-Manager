@@ -35,6 +35,4 @@ public class TaskService {
     public void delete(int id){
         taskRepository.deleteById(id);
     }
-
-
 }
