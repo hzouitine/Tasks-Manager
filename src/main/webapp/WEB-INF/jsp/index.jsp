@@ -15,15 +15,15 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light py-0" id="nv">
-    <a class="navbar-brand pl-5" href="#">
+    <a class="navbar-brand pl-5" href="/">
         <span class="pl-3 font-italic">TASKMANAGER</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars" style="color : white"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto mr-5">
-            <a class="nav-item nav-link mx-4 active" href="#">Tasks<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link mx-4 " href="/new">New Task</a>
+            <a class="nav-item nav-link mx-4 active" href="/">Tasks<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link mx-4 " href="/task">New Task</a>
         </div>
     </div>
 </nav>
@@ -37,6 +37,7 @@
         <th scope="col">Date created</th>
         <th scope="col">Finished</th>
         <th scope="col"></th>
+        <th scope="col"></th>
 
     </tr>
     </thead>
@@ -48,8 +49,19 @@
             <td><fmt:formatDate type = "date"
                                 value = "${ task.dateCreated}" /></td>
             <td>${ task.finished ? "YES" : "NOT YET" }</td>
+
+            <c:url value="task" var="newTask">
+                <c:param name="id"   value="${task.id}" />
+                <c:param name="name"    value="${task.name}" />
+                <c:param name="description" value="${task.description}" />
+                <c:param name="finished"    value="${task.finished}" />
+            </c:url>
+            <td><a href="<c:out value="${ newTask }"></c:out>"><button type="button" class="btn btn-primary btn-sm">Edit</button>
+            </a></td>
+
             <td><a href="/delete?id=${task.id}"><button type="button" class="btn btn-danger btn-sm">Delete</button>
             </a></td>
+
         </tr>
     </c:forEach>
 
