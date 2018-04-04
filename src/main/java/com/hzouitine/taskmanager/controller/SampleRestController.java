@@ -18,11 +18,6 @@ public class SampleRestController {
         this.taskService = taskService;
     }
 
-    @RequestMapping("/")
-    String home(){
-        return "Hello";
-    }
-
     @GetMapping("/tasks")
     public String tasks(){
         return taskService.findAll().toString();
