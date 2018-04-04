@@ -36,6 +36,7 @@
         <th scope="col">Description</th>
         <th scope="col">Date created</th>
         <th scope="col">Finished</th>
+        <th scope="col"></th>
 
     </tr>
     </thead>
@@ -47,6 +48,8 @@
             <td><fmt:formatDate type = "date"
                                 value = "${ task.dateCreated}" /></td>
             <td>${ task.finished ? "YES" : "NOT YET" }</td>
+            <td><a href="/delete?id=${task.id}"><button type="button" class="btn btn-danger btn-sm">Delete</button>
+            </a></td>
         </tr>
     </c:forEach>
 
